@@ -1,25 +1,35 @@
-import logo from './logo.svg';
+import React, { Component } from 'react';
+import Subject from './component/Subject';
+import TOC from './component/TOC';
+import Content from './component/Content';
 import './App.css';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends Component {
+  constructor(props){
+    super(props);
+    this.state = {
+      TOC:{
+        first:"HTML",
+        second:"CSS",
+        third:"JavaScript",
+      },
+      Content:{
+        title: "Edit and save to reload.",
+        address: "src/App.js", 
+        text: "Learn React"
+      }
+    }
+  }
+  
+  render() {
+    return (
+      <div className="App">
+        <Subject logo="logo"></Subject>
+        <TOC first={this.state.TOC.first} second={this.state.TOC.second} third={this.state.TOC.third}></TOC>
+        <Content title={this.state.Content.title} address={this.state.Content.address} text={this.state.Content.text}></Content>
+      </div>
+    );
+  }
 }
 
 export default App;
